@@ -32,3 +32,34 @@ function calculateFare() {
         // Result Section Hide
         document.getElementById('results').style.display = "none";
     }
+
+
+
+
+// Page Auto Refesh
+    let idleTime = 0;
+    const idleLimit = 2; // কত মিনিট পর রিফ্রেশ হবে (এখানে ২ মিনিট)
+
+    // টাইম কাউন্ট করার ফাংশন
+    function timerIncrement() {
+        idleTime++;
+        if (idleTime >= idleLimit) { 
+            window.location.reload(); // ২ মিনিট পার হলে পেজ রিফ্রেশ হবে
+        }
+    }
+
+    // প্রতি ১ মিনিটে একবার চেক করবে
+    let idleInterval = setInterval(timerIncrement, 60000); 
+
+    // ইউজারের অ্যাক্টিভিটি ডিটেক্ট করার ফাংশন (মাউস বা কিবোর্ড ব্যবহার করলে টাইম ০ হয়ে যাবে)
+    window.onload = resetTimer;
+    window.onmousemove = resetTimer;
+    window.onmousedown = resetTimer; // স্মার্টফোন বা ট্যাবের জন্য
+    window.ontouchstart = resetTimer; 
+    window.onclick = resetTimer;     
+    window.onkeypress = resetTimer;   
+    window.addEventListener('scroll', resetTimer, true); 
+
+    function resetTimer() {
+        idleTime = 0; // অ্যাক্টিভিটি থাকলে টাইম আবার ০ থেকে শুরু হবে
+    }
