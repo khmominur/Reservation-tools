@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GDS Layover Calculator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="calc-wrap">
+  <div class="calc-card">
+    <div class="calc-title">Layover Calculator</div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>1st Arrival</label>
+        <input type="text" id="arr" placeholder="1435" maxlength="7"
+               autocomplete="off" spellcheck="false" oninput="clearRes()">
+      </div>
+      <div class="field">
+        <label>2nd Departure</label>
+        <input type="text" id="dep" placeholder="1820" maxlength="7"
+               autocomplete="off" spellcheck="false" oninput="clearRes()">
+      </div>
+    </div>
+
+    <p class="hint">HHMM format &nbsp;·&nbsp; পরের দিন হলে +1 লাগান &nbsp;·&nbsp; e.g. 0120+1</p>
+
+    <div class="arrow-row">
+      <div class="arrow-line"></div>
+      <span class="arrow-icon">&#8594;</span>
+      <div class="arrow-line"></div>
+    </div>
+
+    <button class="btn-calc" onclick="calc()">Calculate Layover</button>
+
+    <p class="err-msg" id="errMsg"></p>
+
+    <div class="result-box" id="resultBox">
+      <div class="result-big" id="bigTime"></div>
+      <div class="result-sub" id="subTime"></div>
+      <div id="statusPill"></div>
+      <div class="detail-row">
+        <span class="detail-label">Arrival</span>
+        <span class="detail-val" id="dArrival"></span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Departure</span>
+        <span class="detail-val" id="dDeparture"></span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Total minutes</span>
+        <span class="detail-val" id="dMins"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
