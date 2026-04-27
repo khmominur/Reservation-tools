@@ -1,1 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Age Calculator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="age-app">
+    <div class="app-header">
+      <div class="app-title">Age Calculator</div>
+      <div class="app-subtitle">Exact age down to the day</div>
+    </div>
 
+    <div class="input-card" id="inputCard">
+      <div class="section-label">Date of birth</div>
+      <div class="date-row">
+        <div class="field-group">
+          <span class="field-label">Day</span>
+          <input type="number" id="dobDay" min="1" max="31" placeholder="DD" />
+        </div>
+        <div class="field-group">
+          <span class="field-label">Month</span>
+          <input type="number" id="dobMonth" min="1" max="12" placeholder="MM" />
+        </div>
+        <div class="field-group">
+          <span class="field-label">Year</span>
+          <input type="number" id="dobYear" min="1" max="9999" placeholder="YYYY" />
+        </div>
+      </div>
+      <div class="error-msg" id="errMsg">Please enter a valid date of birth.</div>
+
+      <div class="divider">calculate as of</div>
+
+      <div class="toggle-row">
+        <span class="toggle-label">Today &mdash; <span id="todayStr"></span></span>
+        <button class="toggle-btn" id="customToggle" onclick="toggleCustomDate()">
+          <span class="toggle-dot" id="toggleDot"></span>
+          Custom date
+        </button>
+      </div>
+
+      <div class="custom-date-wrap" id="customDateWrap">
+        <div class="section-label" style="margin-top: 1rem;">Reference date</div>
+        <div class="date-row">
+          <div class="field-group">
+            <span class="field-label">Day</span>
+            <input type="number" id="refDay" min="1" max="31" placeholder="DD" />
+          </div>
+          <div class="field-group">
+            <span class="field-label">Month</span>
+            <input type="number" id="refMonth" min="1" max="12" placeholder="MM" />
+          </div>
+          <div class="field-group">
+            <span class="field-label">Year</span>
+            <input type="number" id="refYear" min="1" max="9999" placeholder="YYYY" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="calc-btn" id="calcBtn" onclick="calculateAge()">Calculate Age</button>
+
+    <div class="results" id="results">
+      <div class="big-age">
+        <div class="section-label">Your exact age</div>
+        <div class="big-age-nums" id="bigAgeNums"></div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value" id="totalMonths">—</div>
+          <div class="stat-label">Total months</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="totalWeeks">—</div>
+          <div class="stat-label">Total weeks</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="totalDays">—</div>
+          <div class="stat-label">Total days</div>
+        </div>
+      </div>
+
+      <button class="reset-btn" onclick="resetCalc()">Calculate again</button>
+    </div>
+
+    <footer class="page-footer">
+      &copy; <span id="footerYear"></span> Age Calculator. All rights reserved.
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
