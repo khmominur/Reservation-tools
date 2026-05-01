@@ -54,7 +54,7 @@ function generateTicketInfo() {
     let pax = parseInt(document.getElementById('pax_count').value) || 1;
 
     if (!segment || !baggage) {
-        alert("Segment এবং Baggage দিন।");
+        alert("Please enter Segment & Baggage.");
         return;
     }
 
