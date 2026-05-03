@@ -16,7 +16,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('04.jpg') no-repeat center center;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
     background-size: cover;
     background-attachment: fixed;
     position: relative;
