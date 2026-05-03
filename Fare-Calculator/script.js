@@ -1,4 +1,5 @@
 let calculatedNetFare = 0;
+let calculatedGrossFare = 0;
 
 function calculateFare() {
     let gross_fare = parseFloat(document.getElementById('gross_fare').value);
@@ -18,6 +19,7 @@ function calculateFare() {
     let net_fare = (gross_fare + AIT - IATA_Commission) + markup;
 
     calculatedNetFare = Math.round(net_fare) + 2;
+    calculatedGrossFare = gross_fare;
 
     document.getElementById('ait').innerText = "AIT (0.3%): " + AIT.toLocaleString();
     document.getElementById('iata').innerText = "IATA Commission: " + IATA_Commission.toLocaleString();
@@ -44,12 +46,14 @@ function resetForm() {
     document.getElementById('ticket_output').style.display = "none";
 
     calculatedNetFare = 0;
+    calculatedGrossFare = 0;
 }
 
 function openTicketModal() {
     document.getElementById('ticketModal').style.display = "flex";
     document.getElementById('ticket_output').style.display = "none";
     document.getElementById('pax_count').value = "1";
+    document.getElementById('show_gross_fare').checked = false;
 }
 
 function closeTicketModal() {
@@ -60,6 +64,7 @@ function generateTicketInfo() {
     let segment = document.getElementById('segment_input').value.trim();
     let baggage = document.getElementById('baggage_input').value.trim();
     let pax = parseInt(document.getElementById('pax_count').value) || 1;
+    let showGrossFare = document.getElementById('show_gross_fare').checked;
 
     if (!segment || !baggage) {
         alert("Please enter Segment & Baggage.");
@@ -71,8 +76,27 @@ function generateTicketInfo() {
         maximumFractionDigits: 0
     });
 
+    let grossFormatted = calculatedGrossFare.toLocaleString('en-US', {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+    });
+
     let output = segment;
-    output += "\n\nNet Fare: " + netFormatted + ".00 (Per Pax)";
+
+    // Gross Fare selected থাকলে Net Fare এর আগে দেখাবে
+    if (showGrossFare) {
+        output += "\n\nGross Fare: " + grossFormatted + ".00 (Per Pax)";
+        if (pax > 1) {
+            let totalGross = calculatedGrossFare * pax;
+            let totalGrossFormatted = totalGross.toLocaleString('en-US', {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            });
+            output += "\nTotal Gross: " + totalGrossFormatted + ".00 (" + pax + " Pax)";
+        }
+    }
+
+    output += (showGrossFare ? "\n" : "\n\n") + "Net Fare: " + netFormatted + ".00 (Per Pax)";
 
     // ১ এর বেশি pax হলে total fare আলাদা লাইনে
     if (pax > 1) {

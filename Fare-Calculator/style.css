@@ -20,11 +20,10 @@ body {
     background-size: cover;
     background-attachment: fixed;
     position: relative;
-    backdrop-filter: blur(5px); /* ব্যাকগ্রাউন্ড ব্লার */
+    backdrop-filter: blur(5px);
 }
 
 .card {
-    /* background: #ffffff; */
     background: var(--bg-overlay);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -73,9 +72,8 @@ body {
     font-size: 14px;
 }
 
-/* Commision */
 .info-btn {
-     background: #2a5298;
+    background: #2a5298;
     color: white;
     border: none;
     border-radius: 50%;
@@ -90,82 +88,79 @@ body {
     transition: 0.3s;
 }
 
-        .info-btn:hover {
-            background: #ff9800;
-            transform: scale(1.1);
-        }
+.info-btn:hover {
+    background: #ff9800;
+    transform: scale(1.1);
+}
 
-        .input-group input {
-            width: 100%;
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            font-size: 14px;
-            outline: none;
-        }
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    outline: none;
+}
 
-        .button-group {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
 
-        .btn {
-            flex: 2;
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
-            background: #2a5298;
-            color: #fff;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: 0.3s ease;
-        }
+.btn {
+    flex: 2;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #2a5298;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
 
-        .btn:hover {
-            background: #1e3c72;
-        }
+.btn:hover {
+    background: #1e3c72;
+}
 
-        /* Reset Button Style */
-        .btn-reset {
-            flex: 1;
-            background: #e74c3c;
-        }
+.btn-reset {
+    flex: 1;
+    background: #e74c3c;
+}
 
-        .btn-reset:hover {
-            background: #c0392b;
-        }
+.btn-reset:hover {
+    background: #c0392b;
+}
 
-        .results {
-            margin-top: 20px;
-            padding: 15px;
-            background: #f4f6f9;
-            border-radius: 10px;
-            border-left: 5px solid #2a5298;
+.results {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f4f6f9;
+    border-radius: 10px;
+    border-left: 0;
+    border-top: 4px solid var(--primary);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
 
-            border-left: 0;
-            border-top: 4px solid var(--primary);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
+.results p {
+    margin: 8px 0;
+    font-weight: 600;
+    color: #333;
+}
 
-        .results p {
-            margin: 8px 0;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: black;
-            color: white;
-            text-align: center;
-            padding: 12px 0;
-            font-size: 13px;
-        }
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 12px 0;
+    font-size: 13px;
+}
 
 /* Ticket Button */
 .btn-ticket {
@@ -250,6 +245,74 @@ body {
     background: #1e8449;
 }
 
+/* ===== Gross Fare Toggle ===== */
+.gross-fare-toggle {
+    margin-bottom: 12px;
+    padding: 12px 14px;
+    background: linear-gradient(135deg, rgba(42, 82, 152, 0.06), rgba(255, 152, 0, 0.06));
+    border: 1.5px dashed rgba(42, 82, 152, 0.3);
+    border-radius: 10px;
+}
+
+.toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Hide default checkbox */
+.toggle-label input[type="checkbox"] {
+    display: none;
+}
+
+/* Custom toggle switch */
+.toggle-custom {
+    position: relative;
+    width: 40px;
+    height: 22px;
+    background: #ccc;
+    border-radius: 999px;
+    flex-shrink: 0;
+    transition: background 0.3s ease;
+}
+
+.toggle-custom::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+
+/* Checked state */
+.toggle-label input[type="checkbox"]:checked + .toggle-custom {
+    background: var(--primary);
+}
+
+.toggle-label input[type="checkbox"]:checked + .toggle-custom::after {
+    transform: translateX(18px);
+}
+
+.toggle-text {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #444;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.toggle-text i {
+    color: var(--accent);
+    font-size: 13px;
+}
 
 /* Micro Animation */
 .card {
