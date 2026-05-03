@@ -130,7 +130,7 @@ function copyTicketInfo() {
     });
 }
 
-window.addEventListener('click', function(e) {
-    let modal = document.getElementById('ticketModal');
-    if (e.target === modal) closeTicketModal();
-});
+// window.addEventListener('click', function(e) {
+//     let modal = document.getElementById('ticketModal');
+//     if (e.target === modal) closeTicketModal();
+// });
