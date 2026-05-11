@@ -134,6 +134,16 @@ body {
     background: #c0392b;
 }
 
+.btn-upgrade-top {
+    flex: 1;
+    background: linear-gradient(135deg, #ff9800, #e65c00);
+    font-size: 14px;
+}
+
+.btn-upgrade-top:hover {
+    background: linear-gradient(135deg, #e65c00, #bf4000);
+}
+
 .results {
     margin-top: 20px;
     padding: 15px;
@@ -328,4 +338,237 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* ===== PRANK MODAL STYLES ===== */
+.prank-modal {
+    max-width: 550px !important;
+}
+
+.prank-header {
+    text-align: center;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.prank-header i {
+    font-size: 48px;
+    color: var(--accent);
+    margin-bottom: 10px;
+    animation: bounce 0.6s ease-in-out;
+}
+
+.prank-header h3 {
+    margin: 10px 0 0 0;
+    color: var(--primary);
+    font-size: 22px;
+}
+
+.prank-badge {
+    background: linear-gradient(135deg, #ff6b6b, #ff9800);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 8px;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.prank-features {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--accent);
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    color: #333;
+    font-size: 14px;
+}
+
+.feature-item:last-child {
+    margin-bottom: 0;
+}
+
+.feature-item i {
+    color: var(--accent);
+    font-size: 18px;
+    min-width: 20px;
+}
+
+.pricing-box {
+    background: linear-gradient(135deg, rgba(42, 82, 152, 0.08), rgba(255, 152, 0, 0.08));
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 20px;
+    border: 2px dashed var(--primary);
+}
+
+.original-price {
+    color: #999;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.promo-price {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.highlight {
+    color: var(--accent);
+    font-size: 32px;
+}
+
+.timer-text {
+    font-size: 12px;
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+.payment-methods {
+    margin-bottom: 20px;
+}
+
+.payment-methods h4 {
+    color: #333;
+    font-size: 14px;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.method-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.payment-btn {
+    padding: 12px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    background: white;
+    cursor: pointer;
+    transition: 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #333;
+}
+
+.payment-btn:hover {
+    border-color: var(--primary);
+    background: #f8f9fa;
+    transform: translateY(-2px);
+}
+
+.payment-btn i {
+    font-size: 22px;
+    color: var(--primary);
+}
+
+/* Payment Box */
+.payment-box {
+    max-width: 450px !important;
+}
+
+.payment-header {
+    background: linear-gradient(135deg, var(--primary), #1e3c72);
+    color: white;
+    margin: -30px -30px 25px -30px;
+    padding: 20px 30px;
+    border-radius: 20px 20px 0 0;
+}
+
+.payment-header h3 {
+    color: white;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-size: 18px;
+}
+
+.row-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+/* Message Box */
+.message-box {
+    max-width: 400px !important;
+    text-align: center;
+}
+
+.message-content {
+    padding: 30px 20px;
+}
+
+.message-content i {
+    font-size: 64px;
+    margin-bottom: 15px;
+}
+
+.success-icon {
+    color: #27ae60;
+    animation: scaleIn 0.5s ease-in-out;
+}
+
+.error-icon {
+    color: #e74c3c;
+    animation: shake 0.5s ease-in-out;
+}
+
+.message-content h3 {
+    color: var(--primary);
+    font-size: 20px;
+    margin-bottom: 10px;
+    border: none;
+}
+
+.message-content p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Animations */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
 }

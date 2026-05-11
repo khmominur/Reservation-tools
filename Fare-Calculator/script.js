@@ -134,3 +134,93 @@ function copyTicketInfo() {
 //     let modal = document.getElementById('ticketModal');
 //     if (e.target === modal) closeTicketModal();
 // });
+
+// ===== PRANK FUNCTIONS =====
+function openPrankModal() {
+    document.getElementById('prankModal').style.display = "flex";
+    startCountdown();
+}
+
+function closePrankModal() {
+    document.getElementById('prankModal').style.display = "none";
+}
+
+function startCountdown() {
+    let timeLeft = 300; // 5 minutes in seconds
+    const countdownEl = document.getElementById('countdown');
+    
+    const interval = setInterval(() => {
+        timeLeft--;
+        let mins = Math.floor(timeLeft / 60);
+        let secs = timeLeft % 60;
+        countdownEl.textContent = `0${mins}:${secs.toString().padStart(2, '0')}`;
+        
+        if (timeLeft <= 0) {
+            clearInterval(interval);
+            countdownEl.textContent = "00:00";
+        }
+    }, 1000);
+}
+
+function prankPaymentFlow(method) {
+    let methodNames = {
+        'card': 'Credit Card Payment',
+        'paypal': 'PayPal Payment',
+        'apple': 'Apple Pay',
+        'google': 'Google Pay'
+    };
+    
+    document.getElementById('paymentTitle').textContent = methodNames[method];
+    document.getElementById('prankModal').style.display = "none";
+    document.getElementById('paymentModal').style.display = "flex";
+}
+
+function closePaymentModal() {
+    document.getElementById('paymentModal').style.display = "none";
+    document.getElementById('prankModal').style.display = "flex";
+}
+
+function processPayment(event) {
+    event.preventDefault();
+    
+    // Simulate payment processing
+    let btn = event.target.querySelector('button[type="submit"]');
+    let originalText = btn.innerHTML;
+    
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing...';
+    
+    // Simulate loading
+    setTimeout(() => {
+        btn.innerHTML = '<i class="fa-solid fa-check"></i> Verifying...';
+    }, 1500);
+    
+    setTimeout(() => {
+        document.getElementById('paymentModal').style.display = "none";
+        showPrankMessage('success');
+    }, 3000);
+}
+
+function showPrankMessage(type) {
+    let icon, title, text;
+    
+    if (type === 'success') {
+        icon = '<i class="fa-solid fa-circle-check success-icon"></i>';
+        title = '✨ Payment Successful!';
+        text = 'Congratulations! You\'ve been pranked! 😂<br>There is no premium version. Enjoy the free calculator! 🎉';
+    } else {
+        icon = '<i class="fa-solid fa-circle-xmark error-icon"></i>';
+        title = 'Payment Failed!';
+        text = 'Just kidding! This was all a harmless prank. 😄';
+    }
+    
+    let messageContent = document.getElementById('messageContent');
+    messageContent.innerHTML = icon + '<h3 id="messageTitle">' + title + '</h3><p id="messageText">' + text + '</p><button class="btn" onclick="closeMessageModal()" style="margin-top: 15px;"><i class="fa-solid fa-face-laughing"></i> Haha, Good One!</button>';
+    
+    document.getElementById('messageModal').style.display = "flex";
+}
+
+function closeMessageModal() {
+    document.getElementById('messageModal').style.display = "none";
+    closePrankModal();
+}
